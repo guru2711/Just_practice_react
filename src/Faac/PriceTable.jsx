@@ -11,8 +11,6 @@ export const PriceTable = ({ isLoading, items, fetchPrices }) => {
     );
   }
 
-  console.log("PriceTable props:", { isLoading, items });
-
   return (
     <table>
       <tbody>

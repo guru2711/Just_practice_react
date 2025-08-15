@@ -27,7 +27,6 @@ const CryptoPrices = ({ limit, children }) => {
       }
 
       const json = await response.json();
-      console.log("Fetched data:", json);
 
       setData({ items: json, isLoading: false });
       setError(null);
@@ -37,8 +36,6 @@ const CryptoPrices = ({ limit, children }) => {
       setData((prev) => ({ ...prev, isLoading: false }));
     }
   };
-
-  console.log("CryptoPrices rendered with", { isLoading, items, error });
 
   if (error) return <div>Error: {error}</div>;
 
