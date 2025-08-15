@@ -4,6 +4,8 @@ import "./App.css";
 
 import Hoc from "./HOC/Hoc";
 import FormattedComponent from "./HOC/formatted";
+import CryptoPrices from "./Faac/CryptoPrices";
+import { PriceTable } from "./Faac/PriceTable";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,6 +15,9 @@ function App() {
       hello
       <div>
         <Enhanced />
+        <CryptoPrices limit={5}>
+          {(props) => <PriceTable {...props} />}
+        </CryptoPrices>
       </div>
     </>
   );
