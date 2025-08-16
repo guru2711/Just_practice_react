@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import "./App.css";
+import "./cursor.css";
 
 import Hoc from "./HOC/Hoc";
 import FormattedComponent from "./HOC/formatted";
@@ -23,6 +24,13 @@ function App() {
           renderProp={({ x, y }) => (
             <h1>
               The mouse position is ({x}, {y})
+              <div
+                className="cursor-dot"
+                style={{
+                  left: `${x}px`,
+                  top: `${y}px`,
+                }}
+              />
             </h1>
           )}
         />
