@@ -17,9 +17,7 @@ function App() {
       hello
       <div>
         <Enhanced />
-        {/* <CryptoPrices limit={5}>
-          {(props) => <PriceTable {...props} />}
-        </CryptoPrices> */}
+
         <MouseTracker
           renderProp={({ x, y }) => (
             <h1>
