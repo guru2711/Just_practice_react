@@ -9,7 +9,6 @@ import CryptoPrices from "./Faac/CryptoPrices";
 import { PriceTable } from "./Faac/PriceTable";
 import MouseTracker from "./RenderProps/RenderProps";
 import { ThemeContext } from "./ContextApi/ThemeProvider";
-import Context from "./ContextApi/Context";
 
 function App() {
   const Enhanced = Hoc(FormattedComponent);
