@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext ,useRef} from "react";
 
 import "./App.css";
 import "./cursor.css";
@@ -8,20 +8,33 @@ import FormattedComponent from "./HOC/formatted";
 import CryptoPrices from "./Faac/CryptoPrices";
 import { PriceTable } from "./Faac/PriceTable";
 import MouseTracker from "./RenderProps/RenderProps";
+import CustomInput from "./CustomInput/CustomInput"
 import { ThemeContext } from "./ContextApi/ThemeProvider";
 
 function App() {
+
+  const [input, setInput] = useState("");
+  const inputRef = useRef();
   const Enhanced = Hoc(FormattedComponent);
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const style = {
     background: theme === "light" ? "#fff" : "#333",
     color: theme === "light" ? "#000" : "#fff",
-    padding: "20px",
+    padding: "10px",
     textAlign: "center",
     border: "none",
   };
+const handleSubmit = () => {
+  const value = inputRef.current.value;
+  console.log(value)
+  if(!value) {
 
+    inputRef.current.focus()
+  }else{
+    alert(value);
+  }
+}
   return (
     <>
       <div style={style}>
@@ -43,6 +56,11 @@ function App() {
             </h1>
           )}
         />
+        <CustomInput ref={inputRef}  value={input} onChange={(e) => setInput(e.target.value)}/>
+          <button onClick={handleSubmit} >Submit </button>
+     <div>
+       {input}
+       </div>
       </div>
     </>
   );
