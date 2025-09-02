@@ -1,35 +1,28 @@
 import { useState, useEffect } from "react";
-import CustomHook from "./CustomHook";
+import useGitHubUser from "./useGitHubUser";
 
 const HooksApi = () => {
-  const [state, setState] = useState(null);
   const [account, setAccount] = useState("");
-  const accountData = CustomHook(account);
+  const { isLoading, data, isError } = useGitHubUser(account);
 
-  useEffect(() => {
-    document.title = state;
-
-    return () => {
-      document.title = "Learn";
-    };
-  }, [state]);
   return (
-    <>
+    <div>
+      <input
+        placeholder="Enter GitHub username"
+        onChange={(e) => setAccount(e.target.value.trim())}
+      />
       <div>
-        counter: <b>{state}</b>
-        <input onChange={(e) => setAccount(e.target.value)} />
-        <div>
-          {!account ? (
-            <p>Please provide a GitHub username</p>
-          ) : (
-            <p>
-              GitHub user {accountData.name} ({accountData.login}) has{" "}
-              {accountData.public_repos} public repositories.
-            </p>
-          )}
-        </div>
+        {!account && <p>Please provide a GitHub username</p>}
+        {isLoading && <p>Loading...</p>}
+        {isError && <p>Error fetching user. Please try again.</p>}
+        {data && (
+          <p>
+            GitHub user {data.name} ({data.login}) has {data.public_repos}{" "}
+            public repositories.
+          </p>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
