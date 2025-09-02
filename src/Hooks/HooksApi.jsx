@@ -6,13 +6,6 @@ const HooksApi = () => {
   const [account, setAccount] = useState("");
   const accountData = CustomHook(account);
 
-  const IncCounter = () => {
-    setState(state + 1);
-  };
-  const DecCounter = () => {
-    setState(state - 1);
-  };
-
   useEffect(() => {
     document.title = state;
 
@@ -25,10 +18,6 @@ const HooksApi = () => {
       <div>
         counter: <b>{state}</b>
         <input onChange={(e) => setAccount(e.target.value)} />
-        <div>
-          <button onClick={DecCounter}>-</button>
-          <button onClick={IncCounter}>+</button>
-        </div>
         <div>
           {!account ? (
             <p>Please provide a GitHub username</p>

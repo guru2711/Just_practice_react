@@ -13,6 +13,7 @@ import { ThemeContext } from "./ContextApi/ThemeProvider";
 import RenderPortal from "./Portal/RenderPortal";
 import Modal from "./Portal/Modal";
 import HooksApi from "./Hooks/HooksApi";
+import Counter from "./Reducer/Reducer";
 
 function App() {
   const [input, setInput] = useState("");
@@ -70,6 +71,7 @@ function App() {
           <RenderPortal />
         </Modal>
         <HooksApi />
+        <Counter />
       </div>
     </>
   );
