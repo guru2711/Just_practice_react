@@ -46,12 +46,12 @@ const useGitHubUser = (account) => {
       try {
         const access_token = import.meta.env.VITE_GITHUB_API;
         const response = await axios.get(
-          `https://api.github.com/users/${account}`,
-          {
-            headers: {
-              Authorization: `token ${access_token}`,
-            },
-          }
+          `https://api.github.com/users/${account}`
+          // {
+          //   headers: {
+          //     Authorization: `token ${access_token}`,
+          //   },
+          // }
         );
 
         dispatch({
