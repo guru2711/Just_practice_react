@@ -1,22 +1,22 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Field from "./Field";
-import { useCallback } from "react";
+import FibonacciNumber from "../Memo/Fib";
 
 const FormField = () => {
-  const [state, setState] = useState("");
+  const [state, setState] = useState({ name: "" });
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setState((state) => ({
-      ...state,
-      name: value,
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
     }));
   }, []);
 
   return (
     <>
-      {state.name}
-      <Field name={"state"} onChange={handleChange} />
+      <Field name="name" onChange={handleChange} />
+      <FibonacciNumber value={state.name} />
     </>
   );
 };
